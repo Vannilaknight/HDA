@@ -1,0 +1,6 @@
+.panel.panel-primary
+    .panel-heading.text-center Featured Cards
+    .panel-body
+        .row(ng-repeat="card in cards")
+            .col-md-12
+                a(href="/cards/{{card.cardId}}") {{card.name}}

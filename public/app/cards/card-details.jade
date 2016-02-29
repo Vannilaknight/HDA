@@ -1,0 +1,38 @@
+.container
+    .col-md-9
+        .col-md-12
+            h3 {{card.name}}
+                small  {{card.cardId}}
+            h4.text-info(ng-if="card.type == 'Spell'") {{card.type}}
+            h4.text-warning(ng-if="card.type == 'Hero'") {{card.type}}
+            h4.text-danger(ng-if="card.type == 'Weapon'") {{card.type}}
+            h4.text-primary(ng-if="card.type == 'Minion'") {{card.type}}
+        .col-md-6
+            h4 Race:
+                small  {{card.race || 'No Race'}}
+            h4 Faction:
+                small  {{card.faction || 'No Faction'}}
+            h4 Rarity:
+                small  {{card.rarity || 'No Rarity'}}
+            h4 Collectible:
+                small  {{card.collectible? 'Yes':'No'}}
+            h4 locale:
+                small  {{card.locale || 'No locale...? HOW!?'}}
+            h4 Player Class:
+                small  {{card.playerClass || 'No Player Class'}}
+            h4 Card Set:
+                small  {{card.cardSet || 'Not from specific set'}}
+        .col-md-6
+            h4.text-warning Attack: {{card.attack || 'None'}}
+            h4.text-danger Health: {{card.health || 'None'}}
+            h4.text-primary Cost: {{card.cost}}
+            h4 Mechanics:
+            ul
+                li(ng-repeat="mechanic in card.mechanics")  {{mechanic.name}}
+    .col-md-3
+        div(ng-if="card.img")
+        img(src="{{card.img}}")
+        img(src="{{card.imgGold}}")
+
+
+

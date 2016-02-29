@@ -1,0 +1,6 @@
+.panel.panel-primary
+    .panel-heading.text-center New Cards
+    .panel-body
+        .row(ng-repeat="card in cards | orderBy:'published':true | limitTo:10")
+            .col-md-12
+                a(href="/cards/{{card.cardId}}") {{card.name}}

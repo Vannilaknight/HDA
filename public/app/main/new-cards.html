@@ -1,0 +1,1 @@
+<div class="panel panel-primary"><div class="panel-heading text-center">New Cards</div><div class="panel-body"><div ng-repeat="card in cards | orderBy:'published':true | limitTo:10" class="row"><div class="col-md-12"><a href="/cards/{{card.cardId}}">{{card.name}}</a></div></div></div></div>

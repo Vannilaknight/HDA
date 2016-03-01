@@ -1,12 +1,42 @@
 .container.top-padding-med
-    .row
-        .col-md-12
-            form.form-inline
-                .form-group
-                    input.form-control(ng-model="searchText", placeholder="Filter")
-                .form-group.margin-left-med
-                    select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
-    .row
-        .col-md-2(ng-repeat="card in cards | hasImage | filter:searchText | orderBy:sortOrder")
-            a(href="/cards/{{card.cardId}}")
-                img.img-responsive(src="{{card.img}}")
+    .main-box
+        .row
+            .col-md-12
+                form.form-inline
+                    .form-group
+                        input.form-control(ng-model="searchText", placeholder="Filter")
+                    .form-group.margin-left-med
+                        select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+                .form-inline
+                    .form-group.smButton(ng-click="setClass('none')") No Class
+                    .form-group.smButton(ng-click="setClass('Mage')") Mage
+                    .form-group.smButton(ng-click="setClass('Warrior')") Warrior
+                    .form-group.smButton(ng-click="setClass('Paladin')") Paladin
+                    .form-group.smButton(ng-click="setClass('Warlock')") Warlock
+                    .form-group.smButton(ng-click="setClass('Priest')") Priest
+                    .form-group.smButton(ng-click="setClass('Rogue')") Rogue
+                    .form-group.smButton(ng-click="setClass('Shaman')") Shaman
+                    .form-group.smButton(ng-click="setClass('Druid')") Druid
+                    .form-group.smButton(ng-click="setClass('Hunter')") Hunter
+        .row
+            .col-md-3
+                div.big-card
+                    img(src="{{activeCard.img || '/images/blank.png'}}")
+                    h4 Race:
+                        small.text-vivid  {{activeCard.race || 'No Race'}}
+                    h4 Faction:
+                        small.text-vivid  {{activeCard.faction || 'No Faction'}}
+                    h4 Rarity:
+                        small.text-vivid  {{activeCard.rarity || 'No Rarity'}}
+                    h4 Collectible:
+                        small.text-vivid  {{activeCard.collectible? 'Yes':'No'}}
+                    h4 locale:
+                        small.text-vivid  {{activeCard.locale || 'No locale...? HOW!?'}}
+                    h4 Player Class:
+                        small.text-vivid  {{activeCard.playerClass || 'No Player Class'}}
+                    h4 Card Set:
+                        small.text-vivid  {{activeCard.cardSet || 'Not from specific set'}}
+            .col-md-9
+                .col-md-2(ng-repeat="card in cards | hasImage | filter:{playerClass: class || ''} | orderBy:cost")
+                    a.clickable(ng-click="setActiveImage(card)")
+                        img.img-responsive(src="{{card.img}}")

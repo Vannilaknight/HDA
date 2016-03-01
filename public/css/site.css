@@ -1,5 +1,18 @@
+@font-face {
+  font-family: HSFont;
+  src: url("../fonts/Belwe-Medium.otf");
+  font-weight: bold;
+}
 body {
   padding-top: 69px;
+  background-image: url("../images/back.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+.navbar {
+  background-image: url("../images/banner.png");
+  background-size: contain;
+  box-shadow: none;
 }
 .navbar-header a.navbar-brand {
   margin-top: -15px;
@@ -56,4 +69,90 @@ footer p {
 }
 .toast-message {
   margin-left: -40px;
+}
+.navbar-nav > li > a:hover {
+  background-color: none;
+  color: #fff;
+}
+.clickable {
+  cursor: pointer;
+}
+.hsbutton {
+  width: 200px;
+  height: 70px;
+  color: #3a3a3a;
+  font-family: "HSFont", Arial;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+  background-image: url("../images/HSbutton.png");
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 75px;
+  transition: background 0.3s;
+}
+.hsbutton:hover {
+  cursor: pointer;
+  width: 200px;
+  height: 70px;
+  color: #3a3a3a;
+  font-family: "HSFont", Arial;
+  font-weight: bold;
+  text-align: center;
+  font-size: 12px;
+  background-image: url("../images/HSbuttonHover.png");
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 75px;
+  transition: background 0.3s;
+}
+.smallHsbutton {
+  margin-top: -15px;
+  width: 150px;
+  height: 70px;
+  font-size: 12px;
+}
+.smallHsbutton:hover {
+  margin-top: -15px;
+  width: 150px;
+  height: 70px;
+  font-size: 12px;
+}
+.smButton {
+  margin: 0 7px;
+  width: 100px;
+  height: 50px;
+  color: #b8ab8f;
+  font-family: "HSFont", Arial;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  background-image: url("../images/smButton.png");
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 50px;
+  transition: background 0.1s;
+}
+.smButton:hover {
+  width: 100px;
+  height: 50px;
+  cursor: pointer;
+  background-image: url("../images/smButtonHover.png");
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  line-height: 50px;
+  transition: background 0.3s;
+}
+.text-vivid {
+  color: #fff;
+}
+.big-card {
+  position: fixed;
+  left: 15%;
+  top: 20%;
+  transform: translateX(-15%, -20%);
 }

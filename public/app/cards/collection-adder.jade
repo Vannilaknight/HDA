@@ -1,0 +1,31 @@
+.container.top-padding-med
+    .main-box
+        .row
+            .col-md-12
+                form.form-inline
+                    .form-group
+                        input.form-control(ng-model="searchText", placeholder="Filter")
+                    .form-group.margin-left-med
+                        select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+        .row
+            .col-md-3
+                div.big-card
+                    img(src="{{activeCard.img || '/images/blank.png'}}")
+                    h4 Race:
+                        small  {{activeCard.race || 'No Race'}}
+                    h4 Faction:
+                        small  {{activeCard.faction || 'No Faction'}}
+                    h4 Rarity:
+                        small  {{activeCard.rarity || 'No Rarity'}}
+                    h4 Collectible:
+                        small  {{activeCard.collectible? 'Yes':'No'}}
+                    h4 locale:
+                        small  {{activeCard.locale || 'No locale...? HOW!?'}}
+                    h4 Player Class:
+                        small  {{activeCard.playerClass || 'No Player Class'}}
+                    h4 Card Set:
+                        small  {{activeCard.cardSet || 'Not from specific set'}}
+            .col-md-9
+                .col-md-2(ng-repeat="card in cards | hasImage | filter:searchText | orderBy:sortOrder")
+                    a(ng-click="setActiveImage(card)")
+                        img.img-responsive(src="{{card.img}}")

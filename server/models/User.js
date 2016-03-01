@@ -11,7 +11,9 @@ var userSchema = mongoose.Schema({
     },
     salt: {type: String, required: '{PATH} is required!'},
     hashed_pwd: {type: String, required: '{PATH} is required!'},
-    roles: [String]
+    roles: [String],
+    cardCollection: [],
+    decks: []
 });
 userSchema.methods = {
     authenticate: function (passwordToMatch) {
@@ -35,12 +37,13 @@ function createDefaultUsers() {
                 username: 'saffronbasalisk@yahoo.com',
                 salt: salt,
                 hashed_pwd: hash,
-                roles: ['admin']
+                roles: ['admin'],
+                cardCollection: [],
+                decks: []
             });
         }
     })
 }
-
 
 exports.createDefaultUsers = createDefaultUsers;
 

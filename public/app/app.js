@@ -8,7 +8,7 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     user: {auth: function(mvAuth) {
       return mvAuth.authorizeAuthenticatedUserForRoute()
     }}
-  }
+  };
 
   $locationProvider.html5Mode(true);
   $routeProvider
@@ -19,8 +19,14 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
       .when('/signup', { templateUrl: '/partials/account/signup',
         controller: 'mvSignupCtrl'
       })
+      .when('/profileCollection', { templateUrl: '/partials/account/profileCollection',
+          controller: 'mvProfileCollectionCtrl', resolve: routeRoleChecks.user
+      })
       .when('/profile', { templateUrl: '/partials/account/profile',
         controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
+      })
+      .when('/collectionAdder', { templateUrl: '/partials/cards/collection-adder',
+          controller: 'collectionAdderCtrl', resolve: routeRoleChecks.user
       })
       .when('/cards', { templateUrl: '/partials/cards/card-list',
         controller: 'mvCardListCtrl'
@@ -37,4 +43,4 @@ angular.module('app').run(function($rootScope, $location) {
       $location.path('/');
     }
   })
-})
+});

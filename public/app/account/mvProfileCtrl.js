@@ -1,4 +1,6 @@
 angular.module('app').controller('mvProfileCtrl', function ($scope, mvAuth, mvIdentity, mvNotifier) {
+    console.log(mvIdentity.currentUser);
+
     $scope.email = mvIdentity.currentUser.username;
     $scope.fname = mvIdentity.currentUser.firstName;
     $scope.lname = mvIdentity.currentUser.lastName;
@@ -8,7 +10,8 @@ angular.module('app').controller('mvProfileCtrl', function ($scope, mvAuth, mvId
             username: $scope.email,
             firstName: $scope.fname,
             lastName: $scope.lname
-        }
+        };
+
         if ($scope.password && $scope.password.length > 0) {
             newUserData.password = $scope.password;
         }
@@ -19,4 +22,4 @@ angular.module('app').controller('mvProfileCtrl', function ($scope, mvAuth, mvId
             mvNotifier.error(reason);
         })
     }
-})
+});

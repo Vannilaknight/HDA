@@ -1,0 +1,13 @@
+.container.top-padding-med
+   .main-box
+      .row
+         .col-md-12
+            form.form-inline
+               .form-group
+                  input.form-control(ng-model="searchText", placeholder="Filter")
+               .form-group.margin-left-med
+                  select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+      .row
+         .col-md-12
+            .col-md-2(ng-repeat="card in cardCollection | hasImage | filter:searchText | orderBy:sortOrder")
+                  img.img-responsive(src="{{card.img}}")

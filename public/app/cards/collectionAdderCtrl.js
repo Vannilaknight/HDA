@@ -1,4 +1,4 @@
-angular.module('app').controller('collectionAdderCtrl', function ($scope, mvCachedCards) {
+angular.module('app').controller('collectionAdderCtrl', function ($scope, mvCachedCards, mvAuth, mvIdentity) {
     $scope.cards = mvCachedCards.query();
 
     $scope.sortOptions = [{value: "name", text: "Sort by Card Name"},
@@ -10,8 +10,23 @@ angular.module('app').controller('collectionAdderCtrl', function ($scope, mvCach
 
     $scope.activeCard;
 
-    $scope.setActiveImage = function(card){
+    $scope.setActiveImage = function (card) {
         $scope.activeCard = card;
+    };
+
+    $scope.addCard = function (card) {
+
+        var newUserData = mvIdentity.currentUser;
+
+        console.log(newUserData);
+
+        newUserData.cardCollection.push(card);
+
+        mvAuth.updateCurrentUser(newUserData).then(function () {
+            console.log(mvIdentity.currentUser);
+        }, function (err) {
+            console.log(err);
+        });
     }
 }).filter('isCollectible', function () {
     return function (cards) {

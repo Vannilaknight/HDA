@@ -34,4 +34,4 @@ module.exports = function (app) {
             bootstrappedUser: req.user
         });
     });
-}
+};

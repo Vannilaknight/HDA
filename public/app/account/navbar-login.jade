@@ -2,21 +2,24 @@
     form.navbar-form(ng-hide="identity.isAuthenticated()")
         ul.nav.navbar-nav
             li
-                .hsbutton.smallHsbutton(onclick="location='/signup'") Sign Up
+                .btn.btn-primary(onclick="location='/signup'") Sign Up
         .form-group
             input.form-control.input-sm(placeholder="Email", ng-model="username")
         .form-group
             input.form-control.input-sm(type="password", placeholder="Password", ng-model="password")
-        button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+        ul.nav.navbar-right
+            li
+                .btn.btn-primary(ng-click="signin(username, password)") Sign In
+
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
         li.dropdown
-            a.dropdown-toggle(href="", data-toggle="dropdown")
+            .hsbutton(href="", data-toggle="dropdown")
                 | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
                 b.caret
             ul.dropdown-menu
                 li(ng-show="identity.currentUser.isAdmin()")
                     a(href="/admin/users") User Admin
                 li
-                    a(href="/profile") Profile
+                    a(href="/profileCollection") Card Collection
                 li
                     a(href="", ng-click="signout()") Sign Out
